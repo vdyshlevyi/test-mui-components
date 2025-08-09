@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --list-different ."
   },
   "dependencies": {
     "react": "^19.1.1",
