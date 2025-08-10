@@ -30,7 +30,9 @@ export default function AppRoutes() {
         return
       }
 
-      const responseJson = await apiClient.get<ILoginResponse>(URLS.auth.profile)
+      const responseJson = await apiClient.get<ILoginResponse>(
+        URLS.auth.profile,
+      )
       const newUser: IUser = {
         id: responseJson.id,
         first_name: responseJson.first_name,
