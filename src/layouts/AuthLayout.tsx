@@ -3,7 +3,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import { AppProvider, type Navigation } from "@toolpad/core/AppProvider"
 import { DashboardLayout } from "@toolpad/core/DashboardLayout"
-import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 const NAVIGATION: Navigation = [
   {
@@ -34,7 +34,7 @@ const demoTheme = createTheme({
   },
 })
 
-export default function AuthLayout() {
+export default function AuthLayout({ children }) {
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -56,9 +56,7 @@ export default function AuthLayout() {
       router={router}
       theme={demoTheme}
     >
-      <DashboardLayout>
-        <Outlet />
-      </DashboardLayout>
+      <DashboardLayout>{children}</DashboardLayout>
     </AppProvider>
   )
 }
