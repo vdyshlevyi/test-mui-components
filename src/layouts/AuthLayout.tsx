@@ -4,16 +4,17 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import { AppProvider, type Navigation } from "@toolpad/core/AppProvider"
 import { DashboardLayout } from "@toolpad/core/DashboardLayout"
 import { useLocation, useNavigate } from "react-router-dom"
+import type { ReactNode } from "react"
 
 const NAVIGATION: Navigation = [
   {
-    segment: "",
-    title: "Home",
+    segment: "dashboard",
+    title: "Dashboard",
     icon: <DashboardIcon />,
   },
   {
-    segment: "routes",
-    title: "Routes",
+    segment: "orders",
+    title: "Orders",
     icon: <ShoppingCartIcon />,
   },
 ]
@@ -34,14 +35,14 @@ const demoTheme = createTheme({
   },
 })
 
-export default function AuthLayout({ children }) {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   const location = useLocation()
   const navigate = useNavigate()
 
   const router = {
     basename: "/",
     pathname: location.pathname,
-    navigate: (path: string) => navigate(path),
+    navigate: (path: string) => navigate(path, { replace: false }),
     prefetch: () => {},
   }
 
